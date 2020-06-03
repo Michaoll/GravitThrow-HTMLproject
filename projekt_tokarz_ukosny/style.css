@@ -1,0 +1,285 @@
+body
+{
+    /*  This pattern is downloaded from www.subtlepatterns.com 
+    If you need more, that's where to get'em.
+    
+    Font license info
+
+
+    ## Fontelico
+
+   Copyright (C) 2012 by Fontello project
+
+   Author:    Crowdsourced, for Fontello project
+   License:   SIL (http://scripts.sil.org/OFL)
+   Homepage:  http://fontello.com
+
+
+    ## Entypo
+
+   Copyright (C) 2012 by Daniel Bruce
+
+   Author:    Daniel Bruce
+   License:   SIL (http://scripts.sil.org/OFL)
+   Homepage:  http://www.entypo.com
+
+
+    ## Elusive
+
+   Copyright (C) 2013 by Aristeides Stathopoulos
+
+   Author:    Aristeides Stathopoulos
+   License:   SIL (http://scripts.sil.org/OFL)
+   Homepage:  http://aristeides.com/
+
+
+    ## Font Awesome
+
+   Copyright (C) 2016 by Dave Gandy
+
+   Author:    Dave Gandy
+   License:   SIL ()
+   Homepage:  http://fortawesome.github.com/Font-Awesome/
+    
+    Text was publicated according to license of page subtlepatterns.com and fonntello.com
+    */ 
+	background-image:url("image/background.png");
+	font-size:20px;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    margin: 0px;
+    padding: 0px;
+}
+#container
+{
+    width: 1000px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+#logo
+{
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size:40px;
+    width: 970px;
+    height: 70px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+}
+#nav
+{
+    background-color: antiquewhite;
+    padding-top:5px;
+    height: 60px;
+    width: 1000px;    
+}
+ol
+{
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+    height: 35 px;
+    display: inline-block;
+    
+    
+}
+ol a
+{
+     padding-right: 20px;
+     padding-left: 20px;
+     padding-top:15px;
+     color: brown;
+     width: 140px;
+     height: 35px;
+     font-size: 20px;
+     text-decoration: none;
+     display: block;
+     font-weight: 600;
+   
+}
+ol >li>a:hover
+{
+    
+     padding-right: 20px;
+     padding-left: 20px;
+     padding-top:15px;
+     color: brown;
+     width: 140px;
+     height: 35px;
+     font-size: 20px;
+     text-decoration: none;
+     display: block;
+     font-weight: 600;
+     background-color: #f0c284;
+   
+}
+ol > li
+{  
+     display: block;
+     border-right: 2px solid #990033;
+    
+}
+ol > li:first-child
+{  
+     border-left: 2px solid #990033;
+}
+
+.subtitle
+{
+    
+    font-size:45px;
+    background-color: brown;
+    height: 85px;
+}
+.elo
+{
+    height: 175px;
+}
+
+.section
+{
+    
+    width: 490px;
+    height: 260px;
+    float: left; 
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.sectiona
+{
+    width: 490px;
+    height: 260px;
+    float: left; 
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color:#00CC66;
+}
+.sectiona:hover
+{
+    width: 490px;
+    height: 260px;
+    float: left; 
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-image: url(image/teoria.png);
+}
+#main
+{
+    margin-top: 10px;
+    width:800px;
+    height: 150px;
+    padding-right: 100px;
+    padding-left: 100px;
+    text-align: justify;
+    color: black;
+    background-color: #f0c284;
+
+}
+.section2
+{
+    width: 490px;
+    height: 260px;
+    float: left;
+    background-color: #996699;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+#stopka
+{
+    margin-top: 550px;
+    background-color: black;
+    height: 90px;
+    width: 1000px;
+    color: darkgrey;
+}
+
+#spis ol li
+{
+    color: black;
+    width: 350px;
+    font-size: 10px;
+}
+
+#spis ol li
+{
+    font-size: 30px;
+    text-align: left;
+    border:none;
+    list-style: square;
+}
+
+/* kalkulator/teoria*/
+
+ input[type=text]{
+     width: 70px;
+     height: 25px;
+     font-size:20px;
+     padding: auto;
+     border: 2px solid black;
+     border-radius: 10px;
+}
+ input[type=text]:hover{
+     width: 70px;
+     height: 25px;
+     font-size:20px;
+     padding: auto;
+     border: 2px solid green;
+     border-radius: 10px;
+     background: #90FF33    
+}
+ input[type=button]{
+  margin: 20px;
+  height: 60px;
+  width: 120px;
+  font-size: 25px;
+  border: 3px solid #FF4F44;
+  background: #FF8033;
+}
+ input[type=button]:hover{
+  margin: 20px;
+  height: 60px;
+  width: 120px;
+  font-size: 25px;
+  border: 3px solid #FF8033;
+  background: #FF4F44;
+}
+a
+{
+    color:black;
+}
+
+#wizualizacja
+{
+    margin-left: auto;
+    margin-right: auto;
+    width: 1000px;
+    height: 800px;
+    margin-top: 50px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

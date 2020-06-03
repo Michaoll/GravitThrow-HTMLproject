@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Ukośny</title>
+        <meta name="description" content="Poznaj tajniki ruchu w polach jednorodnych">
+		<link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;1,700&family=Oswald:wght@700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="fontello-006fbb74/css/fontello.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.0/processing.min.js"></script>
+        <link rel="shortcut icon" href="image/ikona.png">
+    </head>
+    <body>
+		<div id="container">
+		<header>
+			<div id="logo">
+			Rzut ukośny
+            </div>
+			<nav>
+                <div id="nav">
+			     <ol>
+                    <li style="float:left"><a href="index.html">Strona główna</a></li>
+                    <li style="float:left"><a href="teoria.html">Teoria</a></li>
+                    <li style="float:left"><a href="wizualizacja.html">Wizualizja</a></li>
+                    <li style="float:left"><a href="wykres.html">Wykres</a></li>
+                    <li style="float:left"><a href="projekt.html">O projekcie</a></li>
+                     <div style="clear: both"></div>
+			     </ol>
+		      </div>
+			</nav>
+		</header>
+        <main>   
+                <div id="main" style="height: auto; padding: 20px; width: auto">
+                Dzięki tej sekcji możesz poczytać jakie technologie wykorzystuje ta strona lub przecztać licencje, które należy opublikować zgodnie z polskim prawem. Ponadto znajdują się tu również autorzy wykorzystanych tekstów, aby wypełnić prawo cytatu.
+                </div>
+                <div id="apkapozegnania" style="margin-top: 20px;">
+                    <script type="application/processing">                               
+                        var x=30, y=470, v1=2, v2=8, g=0.1;
+                        void setup(){
+                            size(500, 500);
+                        }
+                    
+                    void draw(){
+                                
+                                
+                                
+                                background(64);
+                                fill(255, 255, 255);
+                                strokeWeight(5);
+                                stroke(255, 255, 255);
+
+                                for(int i=10; i<500; i=i+10)
+                                {   
+                                    strokeWeight(1);
+                                    line(i, 500, i, 0);
+                                }
+                                for(int i=10; i<500; i=i+10)
+                                {   
+                                    strokeWeight(1);
+                                    line(0, i, 500, i);
+                                }
+
+                                strokeWeight(5);
+                                line(10, 500, 10, 0);
+                                line(0, 490, 500, 490);
+                                ellipse(x, y, 20, 20);
+                                update();
+
+                            }
+
+                            function update()
+                            {
+                                x=x+v1;
+                                y=y-v2;
+                                v2=v2-g;
+                                if(x>500||y<0||y>500)
+                                {
+                                    x=30;
+                                    y=470;
+                                    v1=2;
+                                    v2=8;
+                                }
+                            }
+                        </script>
+		       <canvas> </canvas>
+                </div>
+                <div id="theend">
+                <h1>Nasze technologie, użyte sztuczki</h1>
+                <p style="text-align: justify;">Nasza strona używa szerokiej gamy technologie front-endowe tj. język HTML 5, CSS, JavaScirpt w tym Canvas oraz JS Processing, które obsługują silniki animacji tej strony. Aplikacje naszej strony, to chociażby animacje ruchu, rysowanie wykresów oraz obliczanie parametrów lotu rzutu ukośnego dla zadanych wartości. W dziale teoria zastosowano automatyczne przewijanie strony za pomocą spisu treści. Mam nadzieję, że treść tutaj zaprezentowana przypadła Ci do gustu i nie czujesz, że czas na to poświęcony był stracony.</p>
+                
+                <h1>Autorzy wykorzystanych materiałów</h1>
+                <p style="text-align: justify;">
+                Autorami wykorzystanych materiałów teoretycznych są Zbigniew Kąkol, Kamil Kutorasiński. Materiały pochodzą ze stron fizykon.org oraz epodreczniki.open.agh.edu.pl.
+                </p>
+                
+                <h1>Licencje wykorzystanych czcionek</h1>
+<p style="text-align: left;">
+
+  Copyright (C) 2012 by Fontello project<br>
+   <br> 
+   Author:    Crowdsourced, for Fontello project<br>  
+   License:   SIL (http://scripts.sil.org/OFL)<br>
+   Homepage:  http://fontello.com<br>
+
+<br>
+    ## Entypo<br>
+<br>
+   Copyright (C) 2012 by Daniel Bruce<br>
+<br>
+   Author:    Daniel Bruce<br>
+   License:   SIL (http://scripts.sil.org/OFL)<br>
+   Homepage:  http://www.entypo.com<br>
+<br>
+
+    ## Elusive<br>
+<br>
+   Copyright (C) 2013 by Aristeides Stathopoulos<br>
+<br>
+   Author:    Aristeides Stathopoulos<br>
+   License:   SIL (http://scripts.sil.org/OFL)<br>
+   Homepage:  http://aristeides.com/<br>
+<br>
+
+    ## Font Awesome<br>
+<br>
+   Copyright (C) 2016 by Dave Gandy<br>
+<br>
+   Author:    Dave Gandy<br>
+   License:   SIL ()<br>
+   Homepage:  http://fortawesome.github.com/Font-Awesome/<br>
+                    
+   </p>             
+                    <h1>Wykorzystane usługi z innych stron</h1>
+               
+                <ul style="text-align: left;">
+                <li><a href="https://www.favicon.cc/" >favicon.cc</a></li>
+                <li><a href="https://www.toptal.com/designers/subtlepatterns/" >toptal.com/subtlepatterns</a></li>
+                <li><a href="https://fonts.google.com/" >Google Fonts</a></li>    
+                </ul>    
+                
+                </div>
+            
+                <footer>
+                <div id="stopka" style="margin-top:10px">Autorem strony jest Michał Tokarz. Strona została wykonana na potrzeby edukacyjne V LO w Bielsku-Białej. &copy;2020 Wszelkie prawa zastrzeżone </div>
+                </footer>
+
+            </main>
+        </div>
+    </body>
+</html>

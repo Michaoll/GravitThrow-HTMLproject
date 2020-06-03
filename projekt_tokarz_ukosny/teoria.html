@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Ukośny</title>
+        <meta name="description" content="Poznaj tajniki ruchu w polach jednorodnych">
+		<link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;1,700&family=Oswald:wght@700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="fontello-006fbb74/css/fontello.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	    <link rel="shortcut icon" href="image/ikona.png">
+	    <script src="jquery.scrollTo.min.js"></script>
+        
+        <script>
+		
+		jQuery(function($)
+		{
+			
+			$.scrollTo(0);
+			
+			$('#link1').click(function() { $.scrollTo($('#czym'), 500); });
+			$('#link2').click(function() { $.scrollTo($('#opis'), 500); });
+			$('#link3').click(function() { $.scrollTo($('#wyp'), 500); });
+			$('#link4').click(function() { $.scrollTo($('#po'), 500); });
+			$('#link5').click(function() { $.scrollTo($('#kalkulator'), 500); });
+		}
+		);
+		
+		$(window).scroll(function()
+		{
+			if($(this).scrollTop()>300) $('.scrollup').fadeIn();
+			else $('.scrollup').fadeOut();		
+		}
+		);
+	
+	
+	</script>
+    </head>
+    <body>
+		<div id="container">
+		<header>
+			<div id="logo">
+			Rzut ukośny
+            </div>
+			<nav>
+                <div id="nav">
+			     <ol>
+                    <li style="float:left"><a href="index.html">Strona główna</a></li>
+                    <li style="float:left"><a href="teoria.html">Teoria</a></li>
+                    <li style="float:left"><a href="wizualizacja.html">Wizualizja</a></li>
+                    <li style="float:left"><a href="wykres.html">Wykres</a></li>
+                    <li style="float:left"><a href="projekt.html">O projekcie</a></li>
+                     <div style="clear: both"></div>
+			     </ol>
+		      </div>
+			</nav>
+		</header>
+            <article>
+                <div id="main" style="height: auto; padding: 10px; width: auto">Śmiało korzystaj z dostępnej na naszej stronie wiedzy. Spis treści wyposażono w możliwość przewijania artykułu do wybranego skrawka wiedzy za pomocą kliknięcia w opowiedni element spisu treści. Na koniec będziesz miał także możliwość skorzystania z naszego kalkulatora parametrów dla rzutu ukośnego. Powodzenia<i class="icon-emo-happy"></i>
+                </div>
+            
+            <div id="spis">
+            <h1>Spis treści</h1>
+            <ol>                
+                <a id="link1" href="#czym"><li>Czym jest rzut ukośny?</li></a>
+                <a id="link2" href="#opis"><li>Opis ruchu</li></a>
+                <a id="link3" href="#wyp"><li>Wzory</li></a>
+                <a id="link4" href="#po"><li>Podsumowanie</li></a>
+                <a id="link5" href="#kalkulator"><li>Kalkulator parametrów</li></a>
+            </ol>
+            </div>
+            <div id="art" style="text-align: justify">
+                
+                <div id="czym">
+                <h1>Czym jest rzut ukośny?</h1>
+                <p>Rzut ukośny jest "wystrzeleniem pocisku pod pewnym kątem względem podłoża z daną prędkością. Kiedy piłkarz wykonuje rzut wolny, ruch piłki możemy opisać za pomocą rzutu ukośnego, podnie jak wystrzelona kula armatnia czy pocisk snajpera. Rzut ukośny otacza nas z każdej strony, więc dobrze jest w prostu i przyjemny sposób przyswoić tę wiedzę.</p>
+                </div>
+                
+                <div id="opis">
+                <h1>Opis ruchu</h1>
+                <p>W rzucie ukośnym mamy do czynienia z lotem ciała wyrzuconego z np. poziomu zerowego (y0 = 0). Ciału jest nadawana prędkość o wartości v0, skierowana pod kątem α do poziomu. Ciało porusza się łukiem, by po pewnym czasie opaść na ziemię. Wygodnie jest umieścić rysunek rzutu ukośnego w układzie współrzędnych, co ułatwia orientację w nazwach zmiennych i pozwala na wyprowadzenie równania toru. Jeżeli pominiemy opory powietrza to ruch odbywa się ze stałym przyspieszeniem grawitacyjnym g, możemy więc zastosować równania ruchu przyśpieszonego jednostajnie oraz jednostajnego. Ponieważ przyspieszenie jest skierowane "w dół" wygodnie jest wybrać układ współrzędnych tak, że x będzie współrzędną poziomą, a y pionową. Ponadto, przyjmijmy, że początek układu współrzędnych pokrywa się z punktem, z którego wylatuje ciało tzn. r0 = 0 oraz, że prędkość w chwili początkowej t=0 jest równa v0 i tworzy kąt θ z dodatnim kierunkiem osi x.
+                </p>
+                </div>
+                
+                <div id="wyp">
+                <h1>Wzory</h1>
+                <image src="image/rys1.png" width="1000px"/>
+                <image src="image/rys2.png" width="1000px"/>
+                </div>
+                <div id="po">
+                <h1>Podsumowanie</h1>
+                <p>
+                Rzut ukośny chcąc nie chcąc obecny jest w każdej dziedzinie naszego życia. Mamy nadzieję, że ten krótki artykuł Pomógł Ci w zrozumieniu skąd biorą się wzory w tablicach lub jakim torem leci kamień. Zapraszamy Cię również do naszego kalkulatora parametrów oraz pozostałych sekcji, w których możesz obejrzeć animowane wizualizacje lub zagrać w grę. Zachęcamy Cię również do sekcji "O projekcie".
+                </p>
+                </div>
+                <div id="kalkulator">
+                <h1>Kalkulator parametrów</h1>
+                Dodatnie osie  przyjęto do góry i w prawo, jeżeli otrzymujesz wyniki lub dane ujemne to są one przeciwnie zwrócone do osi dodatnich. Zaleca się użyć opcji wyczyść po każdym użyciu kalkulatora.<br><br>
+                <form>
+                <label for="kat">Kąt wystrzelenia(radiany):</label>
+                <input type="text" id="kat" class="in" value="0"><br><br>
+                <label for="v">Prędkość początkowa:</label>
+                <input type="text" id="v" class="in" value="0"><br><br>
+                <label for="h">Wysokość początkowa:</label>
+                <input type="text" id="h" class="in" value="0"><br><br>
+                <label for="g">Przyśpieszenie grawitacyjne:</label>
+                <input type="text" id="g" class="in" value="0"><br><br>
+                <input type="Button"  value="Oblicz" onclick="licz()">
+                <input type="Button" value="Wyczyść" onclick="czysc()"><br><br>
+                <label for="zasieg">Zasięg lotu:</label>
+                <input type="text" id="zasieg" class="out" value="0"><br><br>
+                <label for="maxh">Maksymalna wysokość:</label>
+                <input type="text" id="maxh" class="out" value="0"><br><br>
+                <label for="czas">Czas trwania lotu:</label>
+                <input type="text" id="czas" class="out" value="0"><br><br>
+                <label for="uwagi">Problemy z danymi:</label>
+                <input type="text" id="uwagi" class="out" value="Wszystko gra :)" style="width: 300px;"><br><br><br><br>
+                </form>
+                    <script>
+                    function zao(x)
+                        {
+                          var a=x%0.01;
+                          return (x-a);
+                        
+                        }
+                    function czysc()
+                        {
+                            document.getElementById("kat").value="0";
+                            document.getElementById("v").value="0";
+                            document.getElementById("h").value="0";
+                            document.getElementById("zasieg").value="0";
+                            document.getElementById("maxh").value="0";
+                            document.getElementById("czas").value="0";
+                            document.getElementById("g").value="0";
+                            document.getElementById("uwagi").value="Wszystko gra :)";
+                            
+                        }
+                        function licz()
+                        {
+                            var v=document.getElementById("v").value;
+                            var h=document.getElementById("h").value;
+                            var kat=document.getElementById("kat").value;
+                            var g=document.getElementById("g").value;
+                            if(g!==0)
+                            {
+                            var tw=(v*Math.sin(kat))/g;
+                            var tc=(v*Math.sin(kat)+Math.sqrt(v*v*Math.sin(kat)*Math.sin(kat)+2*g*h))/g;
+                            var z=tc*v*Math.cos(kat);
+                            var hmax=((-g*tw*tw)/2)+(v*tw)+h+h;
+                            document.getElementById("zasieg").value=zao(z);
+                            document.getElementById("maxh").value=zao(hmax);
+                            document.getElementById("czas").value=zao(tc);
+                            if(v==0)
+                           {
+                            document.getElementById("kat").value="0";
+                            document.getElementById("v").value="0";
+                            document.getElementById("h").value="0";
+                            document.getElementById("zasieg").value="0";
+                            document.getElementById("maxh").value="0";
+                            document.getElementById("czas").value="0";
+                            document.getElementById("g").value="0";
+                            document.getElementById("uwagi").value="Zerowa prędkość";
+                           }
+                            else if(kat<0&h<=0)
+                           {
+                            document.getElementById("kat").value="0";
+                            document.getElementById("v").value="0";
+                            document.getElementById("h").value="0";
+                            document.getElementById("zasieg").value="0";
+                            document.getElementById("maxh").value="0";
+                            document.getElementById("czas").value="0";
+                            document.getElementById("g").value="0";
+                            document.getElementById("uwagi").value="Kula leci pod powierzchnią gruntu";
+                           }
+                        else if(kat<0)
+                           {
+                            document.getElementById("uwagi").value="Strzelasz w dół, pamiętaj";
+                           }
+                        if(kat>Math.pi/2)
+                           {
+                            document.getElementById("uwagi").value="Strzelasz w lewo, pamiętaj";
+                           }
+                            }
+                        if(g==0)
+                        {
+                            czysc();
+                            document.getElementById("uwagi").value="g=0, czyli dzielisz przez zero";
+                        }
+                        if(g<0)
+                        {
+                            czysc();
+                            document.getElementById("uwagi").value="g<0, ciało odleciało w kosmos";
+                        }
+                        }
+                           
+                    </script>
+                </div>
+            </div>
+            </article>
+            <footer>
+            <div id="stopka" style="margin-top:20px">Autorem strony jest Michał Tokarz. Strona została wykonana na potrzeby edukacyjne V LO w Bielsku-Białej. &copy;2020 Wszelkie prawa zastrzeżone </div>
+            </footer>
+        </div>
+    </body>
+</html>

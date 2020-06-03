@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Ukośny</title>
+        <meta name="description" content="Poznaj tajniki ruchu w polach jednorodnych">
+		<link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;1,700&family=Oswald:wght@700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="fontello-006fbb74/css/fontello.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.0/processing.min.js"></script>
+        <link rel="shortcut icon" href="image/ikona.png">
+        <style>
+        input[type=text]
+            {
+                width: 40px;
+                margin:0px;
+            }
+        </style>
+    </head>
+    <body>
+		<div id="container">
+		<header>
+			<div id="logo">
+			Rzut ukośny
+            </div>
+			<nav>
+                <div id="nav">
+			     <ol>
+                    <li style="float:left"><a href="index.html">Strona główna</a></li>
+                    <li style="float:left"><a href="teoria.html">Teoria</a></li>
+                    <li style="float:left"><a href="wizualizacja.html">Wizualizja</a></li>
+                    <li style="float:left"><a href="wykres.html">Wykres</a></li>
+                    <li style="float:left"><a href="projekt.html">O projekcie</a></li>
+                     <div style="clear: both"></div>
+			     </ol>
+		      </div>
+			</nav>
+		</header>
+        <main>   
+                <div id="main" style="height: auto; padding: 20px; width: auto">
+                Ta podstrona umożliwi Ci narysowanie wykresu metodą numeryczną dla zadanych wartości. Korzystaj dowoli. Pamiętaj, że po każdym narysowaniu należy użyć opcji czyść.
+                </div>
+                <div id="sterowanie">
+                        <form>
+                        <label for="stalag">Przyśpieszenie ziemskie </label>
+                        <input type="range" id="stalag" name="stalag" 
+                        min="-0.1" max="0.1" value="0.05" step="0.001" oninput="zwracadane()">   
+                        <input type="text" id="a1">
+                        
+                        <label for="predkoscp" style="margin-left: 40px;">Prędkość początkowa</label>
+                        <input type="range" id="predkoscp" name="cpredkoscp" 
+                        min="0" max="8" value="4" step="0.1" oninput="zwracadane()">
+                        <input type="text" id="a2">
+                        <br><br>
+                        <label for="hp">Wyskość początkowa</label>
+                        <input type="range" id="hp" name="hp" 
+                        min="0" max="500" value="0" step="1" oninput="zwracadane()">
+                        <input type="text" id="a3">
+                    
+                        <label for="katwys" style="margin-left: 40px;">Kąt wystrzelenia</label>
+                        <input type="range" id="katwys" name="katwys" 
+                        min="0" max="1.57" value="0.5" step="0.1" oninput="zwracadane()">
+                        <input type="text" id="a4">
+                        <br><br>
+                        
+                        <label for="stalag">Gęstość ośrodka</label>
+                        <input type="range" id="ges" name="ges" 
+                        min="0" max="1" value="0" step="0.1" oninput="zwracadane()">
+                        <input type="text" id="a5">
+                    
+                        <label for="wia" style="margin-left: 40px;">Prędkość wiatru</label>
+                        <input type="range" id="wia" name="wia" 
+                        min="-1" max="1" value="0" step="0.1" oninput="zwracadane()">
+                        <input type="text" id="a6">
+                        <br><br>
+                            
+                            
+                         <label for="kwiat" style="margin-left: 40px;">Kąt wiatru względem osi x</label>
+                        <input type="range" id="kwiat" name="kwiat" 
+                        min="0" max="1.57" value="0" step="0.1" oninput="zwracadane()">
+                        <input type="text" id="a7">
+                            
+                            
+                        <label for="masa" style="margin-left: 40px;">Masa obiektu</label>
+                        <input type="range" id="masa" name="masa" 
+                        min="0" max="100" value="10" step="0.1" oninput="zwracadane()">
+                        <input type="text" id="a8">   
+                        <br><br>
+                            
+                         <label for="kula" style="margin-left: 40px;">Promień kuli</label>
+                        <input type="range" id="kula" name="kula" 
+                        min="0" max="2" value="0" step="0.1" oninput="zwracadane()">
+                        <input type="text" id="a9">    
+                        <br><br>
+                            
+                        <input type="button" value="Rysuj" onclick="jazda()">
+                        <input type="button" value="Czyść" onclick="czysc()">                                                  
+                        </form>
+                    
+                    <script>
+                    function zwracadane()
+                    {
+                        var a1=document.getElementById("stalag").value;
+                        a1=a1*400;
+                        document.getElementById("a1").value=a1;
+                        var a2=document.getElementById("predkoscp").value;
+                        a2=a2*10;
+                        document.getElementById("a2").value=a2;
+                        
+                        var a3=document.getElementById("hp").value;
+                        a3=a3/10;
+                        document.getElementById("a3").value=a3;
+                        
+                        var a4=document.getElementById("katwys").value;
+                        
+                        document.getElementById("a4").value=a4;
+                        
+                        var a5=document.getElementById("ges").value;
+                        a5=a5*2000;
+                        document.getElementById("a5").value=a5;
+                        
+                        var a6=document.getElementById("wia").value;
+                        a6=a6*10;
+                        document.getElementById("a6").value=a6;
+                        
+                        var a7=document.getElementById("kwiat").value;
+                    
+                        document.getElementById("a7").value=a7;
+                        
+                        var a8=document.getElementById("masa").value;
+                        a8=a8/2;
+                        document.getElementById("a8").value=a8;
+                        
+                        var a9=document.getElementById("kula").value;
+                        
+                        document.getElementById("a9").value=a9;
+                    }
+                    </script>
+                </div>
+                <div id="wizualizacja">
+                
+                <canvas width="1000" height="600" id="canvas" style="background: white; border: 3px solid red"></canvas>
+        
+                    <script>                               
+                    
+                    
+                        const canvas = document.querySelector("#canvas");
+                        const ctx = canvas.getContext("2d");
+                        
+                        var g, v, h, k, v1, v2, x=40, y, wia1, wia2, wia;
+                        var ges, kwiat, promien, a1, a2, masa;
+                        
+                        for (let i=10; i<1000; i=i+10)
+                        {
+                           ctx.strokeStyle = "#00B7EB";
+                           ctx.lineWidth=1;
+                           ctx.beginPath();
+                           ctx.moveTo(i, 0);
+                           ctx.lineTo(i, 600);
+                           ctx.stroke();  
+                        }
+                        for (let i=10; i<600; i=i+10)
+                        {
+                           ctx.strokeStyle = "#00B7EB";
+                           ctx.lineWidth=1;
+                           ctx.beginPath();
+                           ctx.moveTo(0, i);
+                           ctx.lineTo(1000, i);
+                           ctx.stroke();  
+                        }
+                        
+                        ctx.strokeStyle = "black";
+                        ctx.lineWidth=5;
+                        //oś x
+                        ctx.beginPath();
+                        ctx.moveTo(20, 590);
+                        ctx.lineTo(20, 0);
+                        ctx.stroke();
+                        
+                        ctx.beginPath();
+                        ctx.moveTo(20, 0);
+                        ctx.lineTo(5, 20);
+                        ctx.stroke();
+                        
+                        ctx.beginPath();
+                        ctx.moveTo(20, 0);
+                        ctx.lineTo(35, 20);
+                        ctx.stroke();
+                        //oś y
+                        
+                        ctx.beginPath();
+                        ctx.moveTo(20, 590);
+                        ctx.lineTo(1000, 590);
+                        ctx.stroke();
+                        
+                        ctx.beginPath();
+                        ctx.moveTo(1000, 590);
+                        ctx.lineTo(980, 575);
+                        ctx.stroke();
+                        
+                        ctx.beginPath();
+                        ctx.moveTo(1000, 590);
+                        ctx.lineTo(980, 600);
+                        ctx.stroke();
+                                        
+                        
+                    let requestId;
+                    
+                        
+                    const draw = function() 
+                        {
+                        //czyszczenie
+                      //  ctx.clearRect(0, 0, canvas.width, canvas.height);
+                        //kratka
+                  /*      for (let i=10; i<1000; i=i+10)
+                        {
+                           ctx.strokeStyle = "#00B7EB";
+                           ctx.lineWidth=1;
+                           ctx.beginPath();
+                           ctx.moveTo(i, 0);
+                           ctx.lineTo(i, 600);
+                           ctx.stroke();  
+                        }
+                        for (let i=10; i<600; i=i+10)
+                        {
+                           ctx.strokeStyle = "#00B7EB";
+                           ctx.lineWidth=1;
+                           ctx.beginPath();
+                           ctx.moveTo(0, i);
+                           ctx.lineTo(1000, i);
+                           ctx.stroke();  
+                        }   
+                        
+                            
+                        //osie
+                        ctx.strokeStyle = "black";
+                        ctx.lineWidth=5;
+                        
+                        ctx.beginPath();
+                        ctx.moveTo(20, 590);
+                        ctx.lineTo(20, 0);
+                        ctx.stroke();
+                        
+                        ctx.beginPath();
+                        ctx.moveTo(20, 0);
+                        ctx.lineTo(5, 20);
+                        ctx.stroke();
+                        
+                        ctx.beginPath();
+                        ctx.moveTo(20, 0);
+                        ctx.lineTo(35, 20);
+                        ctx.stroke();
+                        //oś y
+                        
+                        ctx.beginPath();
+                        ctx.moveTo(20, 590);
+                        ctx.lineTo(1000, 590);
+                        ctx.stroke();
+                        
+                        ctx.beginPath();
+                        ctx.moveTo(1000, 590);
+                        ctx.lineTo(980, 575);
+                        ctx.stroke();
+                        
+                        ctx.beginPath();
+                        ctx.moveTo(1000, 590);
+                        ctx.lineTo(980, 600);
+                        ctx.stroke();
+                        */
+                        ctx.strokeStyle = "green";
+                        ctx.beginPath();
+                        ctx.moveTo(x,y);
+                        ctx.lineTo(x+v2,y-v1);
+                            
+                       // ctx.arc(x, y, 2, 0, 2 * Math.PI);
+                        ctx.stroke();
+                        
+                        x=x+v2+wia2;
+                        y=y-v1-wia2;
+                        v1=v1-g;
+                        v1=v1-a1;
+                        if(v1<0)
+                        {
+                            v1=v1+a1;
+                        }
+                            if(v1>0)
+                        {
+                            v1=v1-a1;
+                        }
+                        
+       
+                      
+                        
+                        if(x>1000||y>590||y<0)
+                        {
+                            
+                        v=document.getElementById("predkoscp").value;
+
+                        v1=v*Math.sin(k);
+                        v2=v*Math.cos(k);
+                            
+                        y=590-h;
+                        x=20;
+                        }
+                        
+                        requestId = requestAnimationFrame(draw);
+                        }
+                    
+                        
+                    function jazda()
+                    {
+                        
+                        g=document.getElementById("stalag").value;
+                        v=document.getElementById("predkoscp").value;
+                        h=document.getElementById("hp").value;
+                        k=document.getElementById("katwys").value;
+                        ges=document.getElementById("ges").value;
+                        wia=document.getElementById("wia").value;
+                        kwiat=document.getElementById("kwiat").value;
+                        promien=document.getElementById("kula").value;
+                        masa=document.getElementById("masa").value;
+                        
+                        y=590-h;
+                        x=20;
+                        v1=v*Math.sin(k);
+                        v2=v*Math.cos(k);
+                        
+                        wia1=wia*Math.sin(kwiat);
+                        wia2=wia*Math.cos(kwiat);
+                        a1=0.45*ges*(v1-wia1)*(v1-wia1)*Math.PI*promien*promien/2;
+                        a1=0.5*a1/masa;
+                        a2=0.45*ges*(v2-wia2)*(v2-wia2)*Math.PI*promien*promien/2;
+                        a2=0.5*a2/masa;
+                        requestId = requestAnimationFrame(draw);
+                        
+                    }
+                        
+                   function czysc()
+                        {
+                        
+                        cancelAnimationFrame(requestId);   
+                        //kratka
+                          
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                        
+                        for (let i=10; i<1000; i=i+10)
+                        {
+                           ctx.strokeStyle = "#00B7EB";
+                           ctx.lineWidth=1;
+                           ctx.beginPath();
+                           ctx.moveTo(i, 0);
+                           ctx.lineTo(i, 600);
+                           ctx.stroke();  
+                        }
+                            
+                        for (let i=10; i<600; i=i+10)
+                        {
+                           ctx.strokeStyle = "#00B7EB";
+                           ctx.lineWidth=1;
+                           ctx.beginPath();
+                           ctx.moveTo(0, i);
+                           ctx.lineTo(1000, i);
+                           ctx.stroke();  
+                        }    
+                            
+                            
+                            
+                        ctx.strokeStyle = "black";
+                        ctx.lineWidth=5;
+                        //oś x
+                        ctx.beginPath();
+                        ctx.moveTo(20, 590);
+                        ctx.lineTo(20, 0);
+                        ctx.stroke();
+                        
+                        ctx.beginPath();
+                        ctx.moveTo(20, 0);
+                        ctx.lineTo(5, 20);
+                        ctx.stroke();
+                        
+                        ctx.beginPath();
+                        ctx.moveTo(20, 0);
+                        ctx.lineTo(35, 20);
+                        ctx.stroke();
+                        //oś y
+                        
+                        ctx.beginPath();
+                        ctx.moveTo(20, 590);
+                        ctx.lineTo(1000, 590);
+                        ctx.stroke();
+                        
+                        ctx.beginPath();
+                        ctx.moveTo(1000, 590);
+                        ctx.lineTo(980, 575);
+                        ctx.stroke();
+                        
+                        ctx.beginPath();
+                        ctx.moveTo(1000, 590);
+                        ctx.lineTo(980, 600);
+                        ctx.stroke();
+                                                                  
+
+                        }        
+                            
+		          </script>
+                </div>
+                <footer>
+                <div id="stopka" style="margin-top:10px">Autorem strony jest Michał Tokarz. Strona została wykonana na potrzeby edukacyjne V LO w Bielsku-Białej. &copy;2020 Wszelkie prawa zastrzeżone </div>
+                </footer>
+            
+            
+            
+
+
+		
+
+            
+            </main>
+        </div>
+    </body>
+</html>

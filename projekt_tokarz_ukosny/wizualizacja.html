@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Ukośny</title>
+        <meta name="description" content="Poznaj tajniki ruchu w polach jednorodnych">
+		<link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;1,700&family=Oswald:wght@700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="fontello-006fbb74/css/fontello.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.0/processing.min.js"></script>
+        <link rel="shortcut icon" href="image/ikona.png">
+    </head>
+    <body>
+		<div id="container">
+		<header>
+			<div id="logo">
+			Rzut ukośny
+            </div>
+			<nav>
+                <div id="nav">
+			     <ol>
+                    <li style="float:left"><a href="index.html">Strona główna</a></li>
+                    <li style="float:left"><a href="teoria.html">Teoria</a></li>
+                    <li style="float:left"><a href="wizualizacja.html">Wizualizja</a></li>
+                    <li style="float:left"><a href="wykres.html">Wykres</a></li>
+                    <li style="float:left"><a href="projekt.html">O projekcie</a></li>
+                     <div style="clear: both"></div>
+			     </ol>
+		      </div>
+			</nav>
+		</header>
+        <main>   
+                <div id="main" style="height: auto; padding: 20px; width: auto">
+                Przedstawiamy wizualizację rzutu ukośnego napisanej w języku JavaScript w technologii Canvas, który umożliwia obserwowanie ruchu obiektu w zależności od jego prędkości początkowej, kątu wystrzelenia w radianach, stałej grawitacji czy kształtu. Pamiętaj o zresetowaniu animacji przy każdym nowym użyciu. Przedstawiony program to jedynie szybka animacja. Jeżeli pragniesz wyrysować krzywe z wykorzystaniem bardziej zaawansowanych prarametrów zapraszamy do sekcji Wykres. Powodzenia!
+                </div>
+                <div id="sterowanie">
+                        <form>
+                        <label for="stalag">Przyśpieszenie ziemskie (-20; 20 m/s<sup>2</sup>)</label>
+                        <input type="range" id="stalag" name="stalag" 
+                        min="-0.15" max="0.15" value="0.07" step="0.01">   
+                    
+                        <label for="predkoscp" style="margin-left: 40px;">Prędkość początkowa (0; 30 m/s)</label>
+                        <input type="range" id="predkoscp" name="cpredkoscp" 
+                        min="0" max="15" value="8" step="0.1"><br><br>
+                    
+                        <label for="hp">Wyskość początkowa (0; 10m)</label>
+                        <input type="range" id="hp" name="hp" 
+                        min="0" max="300" value="0" step="1">
+                    
+                        <label for="katwys" style="margin-left: 40px;">Kąt wystrzelenia (0; &#960;/2) </label>
+                        <input type="range" id="katwys" name="katwys" 
+                        min="0" max="1" value="0.5" step="0.1">
+                        <br>
+                        <input type="button" value="Jazda" onclick="jazda()">
+                        <input type="button" value="Reset" onclick="czysc()">                                                  
+                        </form>
+                </div>
+                <div id="wizualizacja" style="margin-bottom:0px">
+                
+                <canvas width="1000" height="600" id="canvas" style="background-image:url(image/drzewa.jpg); border: 3px solid red"></canvas>
+        
+                    <script>                               
+                    
+                    
+                        const canvas = document.querySelector("#canvas");
+                        const ctx = canvas.getContext("2d");
+                        
+                        var g, v, h, k, v1, v2, x=40, y;
+                        
+                        ctx.strokeStyle = "black";
+                        ctx.lineWidth=5;
+                        //oś x
+                        ctx.beginPath();
+                        ctx.moveTo(20, 590);
+                        ctx.lineTo(20, 0);
+                        ctx.stroke();
+                        
+                        ctx.beginPath();
+                        ctx.moveTo(20, 0);
+                        ctx.lineTo(5, 20);
+                        ctx.stroke();
+                        
+                        ctx.beginPath();
+                        ctx.moveTo(20, 0);
+                        ctx.lineTo(35, 20);
+                        ctx.stroke();
+                        //oś y
+                        
+                        ctx.beginPath();
+                        ctx.moveTo(20, 590);
+                        ctx.lineTo(1000, 590);
+                        ctx.stroke();
+                        
+                        ctx.beginPath();
+                        ctx.moveTo(1000, 590);
+                        ctx.lineTo(980, 575);
+                        ctx.stroke();
+                        
+                        ctx.beginPath();
+                        ctx.moveTo(1000, 590);
+                        ctx.lineTo(980, 600);
+                        ctx.stroke();
+                        
+                        
+                        ctx.beginPath();
+                        ctx.arc(40, 568, 20, 0, 2 * Math.PI);
+                        ctx.stroke();
+                        
+                        
+                    let requestId;
+                    
+                        
+                    const draw = function() 
+                        {
+                        //czyszczenie
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                            
+                        //osie
+                        ctx.strokeStyle = "black";
+                        ctx.lineWidth=5;
+                        
+                        ctx.beginPath();
+                        ctx.moveTo(20, 590);
+                        ctx.lineTo(20, 0);
+                        ctx.stroke();
+                        
+                        ctx.beginPath();
+                        ctx.moveTo(20, 0);
+                        ctx.lineTo(5, 20);
+                        ctx.stroke();
+                        
+                        ctx.beginPath();
+                        ctx.moveTo(20, 0);
+                        ctx.lineTo(35, 20);
+                        ctx.stroke();
+                        //oś y
+                        
+                        ctx.beginPath();
+                        ctx.moveTo(20, 590);
+                        ctx.lineTo(1000, 590);
+                        ctx.stroke();
+                        
+                        ctx.beginPath();
+                        ctx.moveTo(1000, 590);
+                        ctx.lineTo(980, 575);
+                        ctx.stroke();
+                        
+                        ctx.beginPath();
+                        ctx.moveTo(1000, 590);
+                        ctx.lineTo(980, 600);
+                        ctx.stroke();
+                            
+                                                    
+                        //kula    
+                        ctx.beginPath();
+                        ctx.arc(x, y, 20, 0, 2 * Math.PI);
+                        ctx.stroke();
+                        
+                        x=x+v2;
+                        y=y-v1;
+                        v1=v1-g;
+                        
+                        if(x>1000||y>600||y<0)
+                        {
+                            
+                        v=document.getElementById("predkoscp").value;
+
+                        v1=v*Math.sin(k);
+                        v2=v*Math.cos(k);
+                            
+                        x=40;
+                        y=570-h;
+                        }
+                        
+                        requestId = requestAnimationFrame(draw);
+                        }
+                    
+                        
+                    function jazda()
+                    {
+                        
+                        g=document.getElementById("stalag").value;
+                        v=document.getElementById("predkoscp").value;
+                        h=document.getElementById("hp").value;
+                        k=document.getElementById("katwys").value;
+                        y=570-h;
+                        x=40;
+                        v1=v*Math.sin(k);
+                        v2=v*Math.cos(k);
+                        requestId = requestAnimationFrame(draw);
+                        
+                    }
+                        
+                   function czysc()
+                        {
+                        
+                        cancelAnimationFrame(requestId);
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                        ctx.strokeStyle = "black";
+                        ctx.lineWidth=5;
+                        //oś x
+                        ctx.beginPath();
+                        ctx.moveTo(20, 590);
+                        ctx.lineTo(20, 0);
+                        ctx.stroke();
+                        
+                        ctx.beginPath();
+                        ctx.moveTo(20, 0);
+                        ctx.lineTo(5, 20);
+                        ctx.stroke();
+                        
+                        ctx.beginPath();
+                        ctx.moveTo(20, 0);
+                        ctx.lineTo(35, 20);
+                        ctx.stroke();
+                        //oś y
+                        
+                        ctx.beginPath();
+                        ctx.moveTo(20, 590);
+                        ctx.lineTo(1000, 590);
+                        ctx.stroke();
+                        
+                        ctx.beginPath();
+                        ctx.moveTo(1000, 590);
+                        ctx.lineTo(980, 575);
+                        ctx.stroke();
+                        
+                        ctx.beginPath();
+                        ctx.moveTo(1000, 590);
+                        ctx.lineTo(980, 600);
+                        ctx.stroke();
+                                                  
+                        
+                        ctx.beginPath();
+                        ctx.arc(40, 568, 20, 0, 2 * Math.PI);
+                        ctx.stroke();
+                        
+
+                        }        
+                            
+		          </script>
+                </div>
+                <footer>
+                <div id="stopka" style="margin-top:0px">Autorem strony jest Michał Tokarz. Strona została wykonana na potrzeby edukacyjne V LO w Bielsku-Białej. &copy;2020 Wszelkie prawa zastrzeżone </div>
+                </footer>
+            
+            
+            
+
+
+		
+
+            
+            </main>
+        </div>
+    </body>
+</html>
